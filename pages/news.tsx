@@ -43,10 +43,10 @@ const News = () => {
           ))}
         </div>
         <button
-          className="m-2 px-6 py-2 bg-green-300 rounded-lg"
+          className="m-2 px-4 py-2 bg-green-300 rounded-xl font-bold text-sm hover:bg-green-400 w-1/2"
           onClick={handleNextClick}
         >
-          Next
+          Click For Next
         </button>
       </div>
     </div>

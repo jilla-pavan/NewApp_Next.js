@@ -28,7 +28,7 @@ function NewsCard({ NewsData }: NewsCardProps) {
           alt="image"
         />
       </div>
-      <div className="h-[220px] bg-red-300 rounded-lg ">
+      <div className="h-[240px] bg-red-200 rounded-lg ">
         <h1 className="p-2 text-sm font-bold">{title}</h1>
         <div className="overflow-y-scroll h-1/2">
           <p className="px-2 text-sm ">{description}</p>
