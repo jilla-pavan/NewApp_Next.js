@@ -16,7 +16,12 @@ interface NewsApiResponse {
 
 const News = () => {
   const fetcher = (url: string | URL | Request) =>
-    fetch(url).then((res) => res.json() as Promise<NewsApiResponse>);
+    fetch(url)
+      .then((res) => res.json() as Promise<NewsApiResponse>)
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+        return { articles: [] }; // Default to an empty array on error
+      });
 
   const { data: newsData, error } = useSWR(
     "https://newsapi.org/v2/top-headlines?country=in&apiKey=25405f8e540947ac943d372472eade78",
@@ -26,18 +31,20 @@ const News = () => {
   const [activeNewsCard, setActiveNewsCard] = useState(0);
 
   const handleNextClick = () => {
-    setActiveNewsCard((activeNewsCard + 1) % (newsData?.articles.length || 1));
+    setActiveNewsCard((activeNewsCard + 1) % (newsData?.articles?.length || 1));
   };
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
 
-  return !newsData ? (
+  console.log("News Data:", newsData);
+
+  return !newsData || !newsData.articles ? (
     <Shimmer />
   ) : (
     <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
       <div className="flex items-center justify-center flex-col h-[500px] border border-black bg-red-500 w-[300px] rounded-lg p-6">
         <div className="">
-          {newsData?.articles.map((article, i) => (
+          {newsData.articles.map((article, i) => (
             <div
               key={article.id}
               className={activeNewsCard === i ? "block" : "hidden"}
