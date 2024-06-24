@@ -1,13 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-
 interface NewsData {
-  id: number;
-  title: string;
-  content: string;
-  description: string;
-  urlToImage: string;
+  title?: string;
+  description?: string;
+  urlToImage?: string;
 }
 
 interface NewsCardProps {
@@ -15,6 +12,9 @@ interface NewsCardProps {
 }
 
 function NewsCard({ NewsData }: NewsCardProps) {
+  if (!NewsData) {
+    return null; // or return a placeholder if needed
+  }
   console.log(NewsData);
 
   const { title, description, urlToImage } = NewsData;
@@ -24,14 +24,22 @@ function NewsCard({ NewsData }: NewsCardProps) {
       <div className="h-[200px]">
         <img
           className="h-[170px] w-[300px]  rounded-xl shadow-lg"
-          src={urlToImage === null ? "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg" : urlToImage}
+          src={
+            urlToImage === null
+              ? "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg"
+              : urlToImage
+          }
           alt="image"
         />
       </div>
       <div className="h-[240px] bg-red-200 rounded-lg ">
-        <h1 className="p-2 text-sm font-bold">{title}</h1>
+        <h1 className="p-2 text-sm font-bold">
+          {title === null ? "Title of the Page" : title}
+        </h1>
         <div className="overflow-y-scroll h-1/2">
-          <p className="px-2 text-sm ">{description}</p>
+          <p className="px-2 text-sm ">
+            {description === null ? "Description" : description}
+          </p>
         </div>
       </div>
     </div>
