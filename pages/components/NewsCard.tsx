@@ -19,7 +19,7 @@ function NewsCard({ NewsData }: NewsCardProps) {
 
   const { title, description, urlToImage } = NewsData;
 
-  return (
+  if(NewsData) return (
     <div className="bg-white m-1 rounded-lg p-2 shadow-lg w-[270px] h-[400px] flex items-center justify-center flex-col">
       <div className="h-[200px]">
         <img
