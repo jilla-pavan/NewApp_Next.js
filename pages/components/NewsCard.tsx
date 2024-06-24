@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { imgNotFound } from "../utils/constants";
+
 
 interface NewsData {
   id: number;
@@ -24,7 +24,7 @@ function NewsCard({ NewsData }: NewsCardProps) {
       <div className="h-[200px]">
         <img
           className="h-[170px] w-[300px]  rounded-xl shadow-lg"
-          src={urlToImage === null ? imgNotFound : urlToImage}
+          src={urlToImage === null ? "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg" : urlToImage}
           alt="image"
         />
       </div>

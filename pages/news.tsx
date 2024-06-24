@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useSWR from "swr";
-import { News_URL } from "./utils/constants";
 import NewsCard from "./components/NewsCard";
 import Shimmer from "./components/Shimmer";
 
@@ -20,7 +19,7 @@ const News = () => {
   const fetcher = (url: string | URL | Request) =>
     fetch(url).then((res) => res.json() as Promise<NewsApiResponse>); 
 
-  const { data: newsData, error } = useSWR(News_URL, fetcher);
+  const { data: newsData, error } = useSWR("https://newsapi.org/v2/top-headlines?country=in&apiKey=25405f8e540947ac943d372472eade78", fetcher);
 
   const [activeNewsCard, setActiveNewsCard] = useState(0);
 

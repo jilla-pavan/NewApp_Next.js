@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "index.tsx",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
