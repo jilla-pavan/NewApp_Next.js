@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         headers: [
-          { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
+          { key: "Access-Control-Allow-Origin", value: "*" }, 
         ],
       },
     ];
