@@ -34,11 +34,11 @@ function NewsCard({ NewsData }: NewsCardProps) {
       </div>
       <div className="h-[240px] bg-red-200 rounded-lg ">
         <h1 className="p-2 text-sm font-bold">
-          {title === null ? "Title of the Page" : title}
+          {title === null || undefined ? "Title of the Page" : title}
         </h1>
         <div className="overflow-y-scroll h-1/2">
           <p className="px-2 text-sm ">
-            {description === null ? "Description" : description}
+            {description === null || undefined ? "Description" : description}
           </p>
         </div>
       </div>
